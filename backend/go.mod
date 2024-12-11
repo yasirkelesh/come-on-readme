@@ -7,6 +7,7 @@ require github.com/gofiber/fiber/v2 v2.52.5
 require (
 	github.com/gofiber/utils v0.0.10 // indirect
 	github.com/gorilla/schema v1.1.0 // indirect
+	github.com/yasirkelesh/come-on-readme v0.0.0-20241211194508-cb34d21d2458 // indirect
 )
 
 require (

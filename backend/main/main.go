@@ -3,9 +3,8 @@ package main
 import (
 	"log"
 
+	"github.com/come-on-readme/handlers"
 	"github.com/gofiber/fiber/v2"
-
-	handlers "backend/handlers"
 )
 
 func main() {
@@ -24,6 +23,16 @@ func main() {
 	} */
 
 	app.Get("/", handlers.Hello)
+	//api := app.Group("/api", handlers.Hello)
+
+	//v1 := api.Group("/v1", handlers.Hello) // /api/v1
+	//v1.Get("/list", handlers.Hello)        // /api/v1/list
+	//v1.Get("/user", handlers.Hello)        // /api/v1/user
+
+	//app.Route("/test", func(api fiber.Router) {
+	//	api.Get("/foo", handlers.Hello).Name("foo") // /test/foo (name: test.foo)
+	//	api.Get("/bar", handlers.Hello).Name("bar") // /test/bar (name: test.bar)
+	//}, "test.")
 
 	log.Fatal(app.Listen(":3000"))
 }
