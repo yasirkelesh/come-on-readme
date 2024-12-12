@@ -26,6 +26,11 @@ func main() {
 	} */
 
 	app.Get("/", handlers.Hello)
+	/* app.Get("/stack", func(c *fiber.Ctx) error {
+		return c.JSON(c.App().Stack())
+	  }) */ //Fiber uygulamasının mevcut yığınını döndürür.
+
+	  
 	//api := app.Group("/api", handlers.Hello)
 
 	//v1 := api.Group("/v1", handlers.Hello) // /api/v1
