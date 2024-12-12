@@ -16,6 +16,9 @@ func main() {
 		ServerHeader: "Fiber",
 		//Prefork:      true, //SO_REUSEPORTsocket seçeneğinin kullanımını etkinleştirir. Bu, aynı bağlantı noktasını dinleyen birden fazla Go işlemi başlatır. soket parçalama hakkında daha fazla bilgi edinin.
 	})
+
+	app.Server()
+
 	/* if !fiber.IsChild() {
 		fmt.Println("I'm the parent process")
 	} else {
@@ -35,4 +38,6 @@ func main() {
 	//}, "test.")
 
 	log.Fatal(app.Listen(":3000"))
+
+	app.Shutdown()
 }
