@@ -25,12 +25,11 @@ func main() {
 		fmt.Println("I'm a child process")
 	} */
 
-	app.Get("/", handlers.Hello)
+	app.Get("/generate_readme", handlers.GenerateReadme)
 	/* app.Get("/stack", func(c *fiber.Ctx) error {
 		return c.JSON(c.App().Stack())
 	  }) */ //Fiber uygulamasının mevcut yığınını döndürür.
 
-	  
 	//api := app.Group("/api", handlers.Hello)
 
 	//v1 := api.Group("/v1", handlers.Hello) // /api/v1

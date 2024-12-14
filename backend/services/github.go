@@ -3,54 +3,42 @@ package services
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
+
+	"github.com/come-on-readme/models"
 )
 
-
-
 // GetSomething, API'den verileri alır ve yalnızca istenen alanları döndürür
-func GetContents(owner, repo string) (Content, error) {
+func GetContents(owner, repo string) ([]models.GeneralContent, error) {
 
 	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/contents", owner, repo)
 	resp, err := http.Get(url)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to fetch repo info: %v", err)
+		return nil, fmt.Errorf("failed to fetch repo info: %v", err)
 	}
 	defer resp.Body.Close()
 
-	var responseBody Content
+	var responseBody []models.GeneralContent
 
 	if err := json.NewDecoder(resp.Body).Decode(&responseBody); err != nil {
-		return nil, fmt.Errorf("Failed to fetch repo info: %v", err)
+		return nil, fmt.Errorf("failed to fetch repo info: %v", err)
 	}
 	return responseBody, nil
 }
 
-func FetchReadme(owner, repo string) (string, error) {
-	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/contents", owner, repo)
-	method := "GET"
-
-	client := &http.Client{}
-	req, err := http.NewRequest(method, url, nil)
-
+func GetFile(url string) (*models.File, error) {
+	resp, err := http.Get(url)
 	if err != nil {
-		fmt.Println(err)
-		return "", err
+		return nil, fmt.Errorf("failed to fetch file: %v", err)
 	}
-	req.Header.Add("Cookie", "_octo=GH1.1.2110837635.1733941375; logged_in=no")
+	defer resp.Body.Close()
 
-	res, err := client.Do(req)
-	if err != nil {
-		fmt.Println(err)
-		return "", err
-	}
-	defer res.Body.Close()
+	var responseBody models.File
 
-	body, err := io.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println(err)
-		return "", err
+	if err := json.NewDecoder(resp.Body).Decode(&responseBody); err != nil {
+		return nil, fmt.Errorf("failed to fetch file: %v", err)
 	}
-	return string(body), nil
+	return &responseBody, nil
 }
+
+
