@@ -12,14 +12,14 @@ import (
 //import "github.com/gofiber/fiber/v2"
 
 func GenerateReadme(c *fiber.Ctx) error {
-	var Contents []models.GeneralContent
-	Contents, err := services.GetGeneralContents("yasirkelesh", "philo")
+	var Contents *[]models.GeneralContent
+	Contents, err := services.GetGeneralContents("yasirkelesh", "come-on-readme")
 	if err != nil {
 		log.Printf("error fetching repo info: %v", err)
 		return err
 	}
 	smash.Smash(Contents)
 
-	c.SendString(Contents[1].Name)
+	c.SendString((*Contents)[1].Name)
 	return nil
 }
