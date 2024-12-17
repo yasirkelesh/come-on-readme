@@ -1,3 +1,5 @@
+# ürün geliştirme aşmasındadır
+ 
 # Come-On-Read Me
 
 ## Proje Açıklaması
@@ -12,3 +14,4 @@
 - **Yapay Zeka ile Özgünlük**: Hazır şablonlar kullanmadan, her projeye özel içerik üretimi.
 - **Kolay Kullanım**: Sadece iki adımda README dosyanız hazır.
 - **Geliştirilebilirlik**: Projeniz büyüdükçe, README dosyanızı da büyümeye uygun şekilde güncelleyebilirsiniz.
+
