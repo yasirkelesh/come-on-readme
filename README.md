@@ -1,4 +1,4 @@
-## ürün geliştirme aşmasındadır
+## Geliştirme aşamasındadır
  
 # Come-On-Read Me
 
